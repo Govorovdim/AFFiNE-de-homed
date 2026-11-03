@@ -36,28 +36,14 @@ function createRawSource(compiler: CompilerLike, source: string) {
   return new RawSource(source);
 }
 
-export const getPublicPath = (BUILD_CONFIG: BUILD_CONFIG_TYPE) => {
-  const { BUILD_TYPE } = process.env;
+export const getPublicPath = (_BUILD_CONFIG: BUILD_CONFIG_TYPE) => {
   if (typeof process.env.PUBLIC_PATH === 'string') {
     return process.env.PUBLIC_PATH;
   }
 
-  if (
-    BUILD_CONFIG.debug ||
-    BUILD_CONFIG.distribution === 'desktop' ||
-    BUILD_CONFIG.distribution === 'ios' ||
-    BUILD_CONFIG.distribution === 'android'
-  ) {
-    return '/';
-  }
-
-  const domain =
-    BUILD_TYPE === 'stable'
-      ? 'prod.affineassets.com'
-      : BUILD_TYPE === 'beta'
-        ? 'beta.affineassets.com'
-        : 'dev.affineassets.com';
-  return `https://${domain}/${process.env.RELEASE_ASSET_PREFIX ?? ''}`;
+  // de-homed: assets are always served by the instance itself, never from
+  // AFFiNE's CDN.
+  return '/';
 };
 
 const DESCRIPTION = `de-homed AFFiNE instance.`;
