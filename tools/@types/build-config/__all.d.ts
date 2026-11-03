@@ -34,8 +34,11 @@ declare interface BUILD_CONFIG_TYPE {
   // see: tools/workers
   imageProxyUrl: string;
   linkPreviewUrl: string;
-
-  SENTRY_DSN: string;
+  /**
+   * Optional self-hosted server baked into the build. When empty, the web app
+   * uses `location.origin` and native apps fall back to a local placeholder.
+   */
+  defaultServerUrl: string;
 }
 
 declare var BUILD_CONFIG: BUILD_CONFIG_TYPE;

@@ -81,7 +81,7 @@ export class ServerConfigResolver {
       name:
         this.config.server.name ??
         (this.selfhosted
-          ? 'AFFiNE Self-hosted'
+          ? 'de-homed'
           : env.namespaces.canary
             ? 'AFFiNE Canary Cloud'
             : env.namespaces.beta

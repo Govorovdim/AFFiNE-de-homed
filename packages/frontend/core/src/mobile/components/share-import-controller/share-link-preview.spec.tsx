@@ -242,7 +242,7 @@ describe('link preview transport and route ownership', () => {
       server('self', 'https://self.example', ServerDeploymentType.Selfhosted),
     ]);
     expect(owner.routeEndpoint).toBe(
-      'https://app.affine.pro/api/worker/link-preview'
+      'https://localhost:3010/api/worker/link-preview'
     );
     expect(owner.generation).toBe(generation);
   });
@@ -333,7 +333,7 @@ describe('link preview transport and route ownership', () => {
       'cloud route',
       workspace('cloud'),
       [server('cloud', 'https://cloud.example/', ServerDeploymentType.Affine)],
-      'https://app.affine.pro/api/worker/link-preview',
+      'https://localhost:3010/api/worker/link-preview',
     ],
     ['local deferred route', workspace('local'), [], undefined],
     ['missing server', workspace('missing'), [], undefined],
@@ -424,7 +424,7 @@ describe('link preview transport and route ownership', () => {
     expect(second).not.toBe(first);
     expect(fetch.mock.calls.map(([url]) => url)).toEqual([
       '/api/worker/link-preview',
-      'https://app.affine.pro/api/worker/link-preview',
+      'https://localhost:3010/api/worker/link-preview',
     ]);
   });
 

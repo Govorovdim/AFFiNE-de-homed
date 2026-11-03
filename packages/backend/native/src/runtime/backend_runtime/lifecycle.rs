@@ -358,7 +358,8 @@ impl BackendRuntime {
   }
 
   async fn sync_license_health_worker(&self) -> RuntimeResult<()> {
-    let enabled = !self.script_mode
+    let enabled = crate::license::LICENSE_SERVER_ENABLED
+      && !self.script_mode
       && self.role.owns_background()
       && self.config()?.deployment == crate::runtime::Deployment::SelfHosted;
     let mut worker = self.license_health_worker.lock().await;

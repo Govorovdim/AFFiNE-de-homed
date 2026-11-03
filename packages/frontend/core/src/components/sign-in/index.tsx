@@ -36,17 +36,20 @@ export const SignInPanel = ({
   initStep?: SignInStep | undefined;
   redirectUrl?: string;
 }) => {
+  const defaultServerService = useService(DefaultServerService);
+  const isPlaceholderServer = /^https?:\/\/localhost(?::3010)?\/?$/.test(
+    defaultServerService.server.baseUrl
+  );
+
   const [state, setState] = useState<SignInState>({
     step: initStep
       ? initStep
-      : initialServerBaseUrl
+      : initialServerBaseUrl || isPlaceholderServer
         ? 'addSelfhosted'
         : 'signIn',
     initialServerBaseUrl: initialServerBaseUrl,
     redirectUrl,
   });
-
-  const defaultServerService = useService(DefaultServerService);
 
   const step = state.step;
   const server = state.server ?? defaultServerService.server;

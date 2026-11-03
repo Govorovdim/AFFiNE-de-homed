@@ -10,7 +10,9 @@ public final class QLService {
 
   private init() {
     let store = ApolloStore()
-    endpointURL = URL(string: "https://app.affine.pro/graphql")!
+    // Air-gapped default. The endpoint is replaced with the current
+    // self-hosted server via setEndpoint(base:) before use.
+    endpointURL = URL(string: "https://localhost:3010/graphql")!
     urlSessionClient = URLSessionCookieClient()
     let networkTransport = RequestChainNetworkTransport(
       interceptorProvider: DefaultInterceptorProvider(client: urlSessionClient, store: store),

@@ -17,7 +17,7 @@ import {
   initializeAuthSessions,
   isManagedAuthEndpoint,
 } from './auth/auth-session';
-import { buildType, isDev } from './config';
+import { isDev } from './config';
 import { logger } from './logger';
 
 const webStaticDir = join(resourcesPath, 'web-static');
@@ -50,19 +50,17 @@ async function resolveWhitelistedLocalPath(filepath: string) {
   throw new Error('Invalid filepath');
 }
 
-const apiBaseByBuildType: Record<typeof buildType, string> = {
-  stable: 'https://app.affine.pro',
-  beta: 'https://insider.affine.pro',
-  internal: 'https://insider.affine.pro',
-  canary: 'https://affine.fail',
-};
-
 function resolveApiBaseUrl() {
+  // Air-gapped build: never fall back to an AFFiNE-hosted server.
+  if (BUILD_CONFIG.defaultServerUrl) {
+    return BUILD_CONFIG.defaultServerUrl.replace(/\/+$/, '');
+  }
+
   if (isDev && devServerBase) {
     return devServerBase;
   }
 
-  return apiBaseByBuildType[buildType] ?? apiBaseByBuildType.stable;
+  return 'http://localhost:3010';
 }
 
 function buildTargetUrl(base: string, urlObject: URL) {

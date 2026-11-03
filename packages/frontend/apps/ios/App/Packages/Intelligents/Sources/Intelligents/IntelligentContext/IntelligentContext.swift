@@ -205,7 +205,7 @@ public class IntelligentContext {
   -- WebView Metadata --
   currentDocId: <null>
   currentWorkspaceId: <null>
-  currentServerBaseUrl: https://affine.fail
+  currentServerBaseUrl: https://your-server.example.com
   currentI18nLocale: en
   ===============================================
 

@@ -102,7 +102,6 @@ class MainActivity : BridgeActivity(), AIButtonPlugin.Callback, AFFiNEThemePlugi
     override fun load() {
         super.load()
         configureAndroidIMEBridge()
-        AuthInitializer.initialize(bridge)
         configureEditorWebView()
     }
 

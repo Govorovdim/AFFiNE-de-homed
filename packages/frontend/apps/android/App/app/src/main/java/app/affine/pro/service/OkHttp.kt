@@ -5,8 +5,6 @@ import app.affine.pro.CapacitorConfig
 import app.affine.pro.utils.dataStore
 import app.affine.pro.utils.del
 import app.affine.pro.utils.set
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -79,7 +77,6 @@ object CookieStore {
             cookies.find { it.name == AFFINE_USER_ID }?.let {
                 Timber.d("Update user id [${it.value}]")
                 AFFiNEApp.context().dataStore.set(host + AFFINE_USER_ID, it.toString())
-                Firebase.crashlytics.setUserId(it.value)
             }
             cookies.find { it.name == AFFINE_CSRF_TOKEN }?.let {
                 AFFiNEApp.context().dataStore.set(host + AFFINE_CSRF_TOKEN, it.toString())
@@ -97,7 +94,6 @@ object CookieStore {
         MainScope().launch(Dispatchers.IO) {
             AFFiNEApp.context().dataStore.del(host + AFFINE_USER_ID)
             AFFiNEApp.context().dataStore.del(host + AFFINE_CSRF_TOKEN)
-            Firebase.crashlytics.setUserId("")
         }
     }
 

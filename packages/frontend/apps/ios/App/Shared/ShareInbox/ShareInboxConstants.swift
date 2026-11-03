@@ -12,8 +12,9 @@ enum ShareInboxConstants {
   static let attachmentsDirectoryName = "Attachments"
   static let invalidDirectoryName = "Invalid"
   static let stagingDirectoryName = "affine-share-inbox-staging"
+  // Air-gapped builds do not contact the AFFiNE-hosted link-preview service.
   static let officialLinkPreviewURL = URL(
-    string: "https://app.affine.pro/api/worker/link-preview"
+    string: "https://localhost:3010/api/worker/link-preview"
   )!
   static let maxThumbnailBytes = 256 * 1024
   static let maxShareAttachmentBytes = 64 * 1024 * 1024

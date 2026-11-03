@@ -34,7 +34,8 @@ const appSettingBaseAtom = atomWithStorage<AppSetting>(
     enableNoisyBackground: true,
     autoCheckUpdate: true,
     autoDownloadUpdate: true,
-    enableTelemetry: true,
+    // Air-gapped build: telemetry is disabled.
+    enableTelemetry: false,
     showLinkedDocInSidebar: true,
     disableImageAntialiasing: false,
   },

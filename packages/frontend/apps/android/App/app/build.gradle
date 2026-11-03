@@ -9,8 +9,6 @@ plugins {
     alias libs.plugins.ksp
     alias libs.plugins.rust.android
     alias libs.plugins.compose
-    alias libs.plugins.google.service
-    alias libs.plugins.firebase.crashlytics
     alias libs.plugins.hilt
 }
 
@@ -27,8 +25,8 @@ android {
         applicationId = "app.affine.pro"
         minSdkVersion = rootProject.ext.minSdkVersion
         targetSdkVersion = rootProject.ext.targetSdkVersion
-        versionCode = 1
-        versionName = System.getenv('VERSION_NAME') ?: 'v1.0.0-local'
+        versionCode = 2800
+        versionName = System.getenv('VERSION_NAME') ?: '0.28.0'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [usesCleartextTraffic: "false"]
         aaptOptions {
@@ -129,11 +127,6 @@ dependencies {
     }
     implementation libs.kotlinx.coroutines.android
     implementation libs.kotlinx.serialization.json
-
-    implementation platform(libs.firebase.bom)
-    implementation libs.firebase.analytics
-    implementation libs.firebase.crashlytics
-    implementation libs.firebase.storage
 
     implementation platform(libs.okhttp.bom)
     implementation libs.okhttp

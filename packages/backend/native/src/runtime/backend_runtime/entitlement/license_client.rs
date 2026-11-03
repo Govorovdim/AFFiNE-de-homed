@@ -256,7 +256,7 @@ impl BackendRuntime {
           Ok(None) => {}
           Err(_) => transient_failure = true,
         }
-      } else {
+      } else if crate::license::LICENSE_SERVER_ENABLED {
         match self.refresh_recurring_license(&license).await {
           Ok(Some(refreshed)) => changes.push(activated_change(&refreshed)),
           Ok(None) => {}
@@ -271,6 +271,8 @@ impl BackendRuntime {
           }
         }
       }
+      // Air-gapped build: recurring licences are not refreshed, while
+      // onetime/offline licences are still verified locally above.
     }
     lock
       .rollback()

@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url';
 
 import { getBuildConfig } from '@affine-tools/utils/build-config';
 import { Package } from '@affine-tools/utils/workspace';
-import { sentryEsbuildPlugin } from '@sentry/esbuild-plugin';
 import type { BuildOptions, Plugin } from 'esbuild';
 
 export const electronDir = fileURLToPath(new URL('..', import.meta.url));
@@ -18,8 +17,6 @@ export const mode = (process.env.NODE_ENV =
 export const config = (): BuildOptions => {
   const define = {
     'process.env.GITHUB_SHA': process.env.GITHUB_SHA,
-    'process.env.SENTRY_RELEASE': process.env.SENTRY_RELEASE,
-    'process.env.SENTRY_DSN': process.env.SENTRY_DSN,
     'process.env.DEV_SERVER_URL': process.env.DEV_SERVER_URL,
     'process.env.NODE_ENV': process.env.NODE_ENV,
     REPLACE_ME_BUILD_ENV: process.env.BUILD_TYPE ?? 'stable',
@@ -39,20 +36,6 @@ export const config = (): BuildOptions => {
   };
 
   const plugins: Plugin[] = [];
-
-  if (
-    process.env.SENTRY_AUTH_TOKEN &&
-    process.env.SENTRY_ORG &&
-    process.env.SENTRY_PROJECT
-  ) {
-    plugins.push(
-      sentryEsbuildPlugin({
-        org: process.env.SENTRY_ORG,
-        project: process.env.SENTRY_PROJECT,
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-      })
-    );
-  }
 
   plugins.push({
     name: 'no-side-effects',

@@ -7,7 +7,8 @@ import { readShareLinkPreview } from './preview';
 import type { PendingShareItem, ShareLinkPreview } from './types';
 
 const LINK_PREVIEW_PATH = '/api/worker/link-preview';
-const OFFICIAL_ENDPOINT = `https://app.affine.pro${LINK_PREVIEW_PATH}`;
+// Air-gapped build: never use the AFFiNE-hosted preview service.
+const OFFICIAL_ENDPOINT = `https://localhost:3010${LINK_PREVIEW_PATH}`;
 export class SharePreviewRouteOwner {
   private endpoint: string | undefined;
   private server: Server | undefined;

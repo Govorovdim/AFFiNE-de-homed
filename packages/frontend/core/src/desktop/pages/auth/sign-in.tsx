@@ -62,7 +62,7 @@ export const SignIn = ({
     [handleClose, navigate, redirectUrl]
   );
 
-  const initStep = server ? 'addSelfhosted' : 'signIn';
+  const initStep = server ? 'addSelfhosted' : undefined;
 
   return (
     <SignInPageContainer>

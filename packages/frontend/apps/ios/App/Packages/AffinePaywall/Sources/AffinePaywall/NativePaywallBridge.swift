@@ -132,7 +132,9 @@ public final class NativePaywallBridge: ObservableObject {
 
 private extension NativePaywallBridge {
   static let revenueCatToken = "appl_FIzFhieVpSSmJRYJWwhVrgtnsVf"
-  static let revenueCatProxyEndpoint = URL(string: "https://iap.affine.pro/")!
+  // Air-gapped build: purchases are unavailable, so never contact the
+  // AFFiNE-hosted RevenueCat proxy.
+  static let revenueCatProxyEndpoint = URL(string: "https://localhost:3010/")!
   static var isPurchasesConfigured = false
 
   static let productIdentifiers: [String] = [

@@ -215,36 +215,33 @@ export const SignInStep = ({
               <span className={style.skipDividerText}>or</span>
               <div className={style.skipDividerLine} />
             </div>
-            <div className={style.skipSection}>
-              {BUILD_CONFIG.isNative ? (
-                <Button
-                  variant="plain"
-                  className={style.addSelfhostedButton}
-                  prefix={
-                    <PublishIcon className={style.addSelfhostedButtonPrefix} />
-                  }
-                  onClick={onAddSelfhosted}
-                >
-                  {t['com.affine.auth.sign.add-selfhosted']()}
-                </Button>
-              ) : (
-                <div className={style.skipText}>
-                  {t['com.affine.mobile.sign-in.skip.hint']()}
-                </div>
-              )}
-              <Button
-                variant="plain"
-                onClick={onSkip}
-                className={style.skipLink}
-                prefix={<LocalWorkspaceIcon className={style.skipLinkIcon} />}
-              >
-                {t['com.affine.mobile.sign-in.skip.link']()}
-              </Button>
-            </div>
           </>
         )}
+        <div className={style.skipSection}>
+          <Button
+            variant="plain"
+            className={style.addSelfhostedButton}
+            prefix={<PublishIcon className={style.addSelfhostedButtonPrefix} />}
+            onClick={onAddSelfhosted}
+          >
+            {t['com.affine.auth.sign.add-selfhosted']()}
+          </Button>
+          {!isSelfhosted && (
+            <div className={style.skipText}>
+              {t['com.affine.mobile.sign-in.skip.hint']()}
+            </div>
+          )}
+          <Button
+            variant="plain"
+            onClick={onSkip}
+            className={style.skipLink}
+            prefix={<LocalWorkspaceIcon className={style.skipLinkIcon} />}
+          >
+            {t['com.affine.mobile.sign-in.skip.link']()}
+          </Button>
+        </div>
       </AuthContent>
-      {isSelfhosted && (
+      {!!state.server && (
         <AuthFooter>
           <Back changeState={changeState} />
         </AuthFooter>

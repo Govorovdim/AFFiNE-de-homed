@@ -53,7 +53,7 @@ export class MagicLinkAuthService {
           clientNonce,
           serverName:
             this.config.server.name ??
-            (env.selfhosted ? 'AFFiNE Self-hosted' : 'AFFiNE Cloud'),
+            (env.selfhosted ? 'de-homed' : 'AFFiNE Cloud'),
           source,
         });
       return { email: canonicalEmail };

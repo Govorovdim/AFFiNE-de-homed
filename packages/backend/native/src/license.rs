@@ -9,6 +9,10 @@ use anyhow::{Context, Result as AnyResult, bail};
 use serde::de::DeserializeOwned;
 use url::Url;
 
+/// Air-gapped build: all outbound licence-server traffic is disabled.
+/// Unit tests keep the mocked protocol path enabled.
+pub(crate) const LICENSE_SERVER_ENABLED: bool = cfg!(test);
+
 const AFFINE_PRO_ENDPOINT: &str = "https://app.affine.pro";
 const AFFINE_PRO_HOST: &str = "app.affine.pro";
 const AFFINE_PRO_REQUEST_TIMEOUT_MS: u32 = 10_000;
@@ -236,6 +240,10 @@ fn affine_pro_request(
   headers: Option<HashMap<String, String>>,
   body: Option<Vec<u8>>,
 ) -> AnyResult<safefetch::SafeFetchResponse> {
+  if !LICENSE_SERVER_ENABLED {
+    bail!("offline mode: AFFiNE Pro license server is disabled");
+  }
+
   let url = Url::parse(AFFINE_PRO_ENDPOINT)
     .context("invalid affine pro endpoint")?
     .join(path)

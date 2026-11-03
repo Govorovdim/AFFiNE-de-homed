@@ -51,7 +51,8 @@ export function getBuildConfig(
         requestLicenseUrl: 'https://affine.pro/redirect/license',
         imageProxyUrl: '/api/worker/image-proxy',
         linkPreviewUrl: '/api/worker/link-preview',
-        SENTRY_DSN: process.env.SENTRY_DSN ?? '',
+        // Air-gapped builds can bake in their own self-hosted server.
+        defaultServerUrl: process.env.AFFINE_DEFAULT_SERVER_URL ?? '',
       };
     },
     get beta() {

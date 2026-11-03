@@ -26319,14 +26319,6 @@
       },
       {
         "group": 5,
-        "hexcode": "1F54C",
-        "label": "mosque",
-        "order": 3842,
-        "tags": ["islam", "masjid", "muslim", "religion"],
-        "unicode": "🕌"
-      },
-      {
-        "group": 5,
         "hexcode": "1F6D5",
         "label": "hindu temple",
         "order": 3843,
@@ -26335,27 +26327,11 @@
       },
       {
         "group": 5,
-        "hexcode": "1F54D",
-        "label": "synagogue",
-        "order": 3844,
-        "tags": ["jew", "jewish", "judaism", "religion", "temple"],
-        "unicode": "🕍"
-      },
-      {
-        "group": 5,
         "hexcode": "26E9",
         "label": "shinto shrine",
         "order": 3846,
         "tags": ["religion", "shinto", "shrine"],
         "unicode": "⛩️"
-      },
-      {
-        "group": 5,
-        "hexcode": "1F54B",
-        "label": "kaaba",
-        "order": 3847,
-        "tags": ["hajj", "islam", "muslim", "religion", "umrah"],
-        "unicode": "🕋"
       },
       {
         "group": 5,
@@ -27792,30 +27768,6 @@
         "order": 4033,
         "tags": ["dizzy", "hurricane", "twister", "typhoon", "weather"],
         "unicode": "🌀"
-      },
-      {
-        "group": 5,
-        "hexcode": "1F308",
-        "label": "rainbow",
-        "order": 4034,
-        "tags": [
-          "gay",
-          "genderqueer",
-          "glbt",
-          "glbtq",
-          "lesbian",
-          "lgbt",
-          "lgbtq",
-          "lgbtqia",
-          "nature",
-          "pride",
-          "queer",
-          "rain",
-          "trans",
-          "transgender",
-          "weather"
-        ],
-        "unicode": "🌈"
       },
       {
         "group": 5,
@@ -31233,30 +31185,6 @@
       },
       {
         "group": 8,
-        "hexcode": "1F549",
-        "label": "om",
-        "order": 4530,
-        "tags": ["hindu", "religion"],
-        "unicode": "🕉️"
-      },
-      {
-        "group": 8,
-        "hexcode": "2721",
-        "label": "star of David",
-        "order": 4532,
-        "tags": ["david", "jew", "jewish", "judaism", "religion", "star"],
-        "unicode": "✡️"
-      },
-      {
-        "group": 8,
-        "hexcode": "2638",
-        "label": "wheel of dharma",
-        "order": 4534,
-        "tags": ["buddhist", "dharma", "religion", "wheel"],
-        "unicode": "☸️"
-      },
-      {
-        "group": 8,
         "hexcode": "262F",
         "label": "yin yang",
         "order": 4536,
@@ -31288,68 +31216,6 @@
         "order": 4540,
         "tags": ["christian", "cross", "orthodox", "religion"],
         "unicode": "☦️"
-      },
-      {
-        "group": 8,
-        "hexcode": "262A",
-        "label": "star and crescent",
-        "order": 4542,
-        "tags": ["crescent", "islam", "muslim", "ramadan", "religion", "star"],
-        "unicode": "☪️"
-      },
-      {
-        "group": 8,
-        "hexcode": "262E",
-        "label": "peace symbol",
-        "order": 4544,
-        "tags": ["healing", "peace", "peaceful", "symbol"],
-        "unicode": "☮️"
-      },
-      {
-        "group": 8,
-        "hexcode": "1F54E",
-        "label": "menorah",
-        "order": 4545,
-        "tags": [
-          "candelabrum",
-          "candlestick",
-          "hanukkah",
-          "jewish",
-          "judaism",
-          "religion"
-        ],
-        "unicode": "🕎"
-      },
-      {
-        "group": 8,
-        "hexcode": "1F52F",
-        "label": "dotted six-pointed star",
-        "order": 4546,
-        "tags": [
-          "dotted",
-          "fortune",
-          "jewish",
-          "judaism",
-          "six-pointed",
-          "star"
-        ],
-        "unicode": "🔯"
-      },
-      {
-        "group": 8,
-        "hexcode": "1FAAF",
-        "label": "khanda",
-        "order": 4547,
-        "tags": [
-          "deg",
-          "fateh",
-          "khalsa",
-          "religion",
-          "sikh",
-          "sikhism",
-          "tegh"
-        ],
-        "unicode": "🪯"
       },
       {
         "group": 8,
@@ -31722,14 +31588,6 @@
         "order": 4598,
         "tags": ["male", "man", "sign"],
         "unicode": "♂️"
-      },
-      {
-        "group": 8,
-        "hexcode": "26A7",
-        "label": "transgender symbol",
-        "order": 4600,
-        "tags": ["symbol", "transgender"],
-        "unicode": "⚧️"
       },
       {
         "group": 8,
@@ -32878,38 +32736,6 @@
         "order": 4772,
         "tags": ["flag", "waving", "white"],
         "unicode": "🏳️"
-      },
-      {
-        "group": 9,
-        "hexcode": "1F3F3-FE0F-200D-1F308",
-        "label": "rainbow flag",
-        "order": 4773,
-        "tags": [
-          "bisexual",
-          "flag",
-          "gay",
-          "genderqueer",
-          "glbt",
-          "glbtq",
-          "lesbian",
-          "lgbt",
-          "lgbtq",
-          "lgbtqia",
-          "pride",
-          "queer",
-          "rainbow",
-          "trans",
-          "transgender"
-        ],
-        "unicode": "🏳️‍🌈"
-      },
-      {
-        "group": 9,
-        "hexcode": "1F3F3-FE0F-200D-26A7-FE0F",
-        "label": "transgender flag",
-        "order": 4775,
-        "tags": ["blue", "flag", "light", "pink", "transgender", "white"],
-        "unicode": "🏳️‍⚧️"
       },
       {
         "group": 9,

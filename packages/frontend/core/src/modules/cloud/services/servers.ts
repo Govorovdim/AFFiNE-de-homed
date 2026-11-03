@@ -28,7 +28,15 @@ export class ServersService extends Service {
           const server = this.framework.createEntity(Server, {
             serverMetadata: metadata,
           });
-          server.revalidateConfig();
+          // Native builds without a baked-in server use a local placeholder
+          // that cannot be reached. Don't retry it forever.
+          if (
+            metadata.id !== 'affine-cloud' ||
+            !!BUILD_CONFIG.defaultServerUrl ||
+            !BUILD_CONFIG.isNative
+          ) {
+            server.revalidateConfig();
+          }
           server.scope.eventBus.emit(ServerStarted, server);
           const ref = this.serverPool.put(metadata.id, server);
           return ref;

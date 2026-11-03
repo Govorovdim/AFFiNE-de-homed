@@ -10,8 +10,8 @@ import { WindowsUpdater } from './windows-updater';
 const mode = process.env.NODE_ENV;
 const isDev = mode === 'development';
 
-// skip auto update in dev mode & internal
-const disabled = buildType === 'internal' || isDev;
+// Air-gapped build: never contact the AFFiNE release feed.
+const disabled = true;
 
 export const autoUpdater =
   process.platform === 'win32' ? new WindowsUpdater() : defaultAutoUpdater;

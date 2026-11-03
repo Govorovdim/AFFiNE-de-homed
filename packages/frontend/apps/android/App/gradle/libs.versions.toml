@@ -17,9 +17,6 @@ apollo                         = "4.4.2"
 apollo-kotlin-adapters         = "0.0.6"
 # @keep
 compileSdk                 = "36"
-firebase-bom               = "33.13.0"
-firebase-crashlytics       = "3.0.3"
-google-services            = "4.4.4"
 gradle-versions            = "0.52.0"
 hilt                       = "2.56.2"
 hilt-ext                   = "1.2.0"
@@ -73,11 +70,6 @@ apollo-adapters-core                     = { module = "com.apollographql.adapter
 apollo-adapters-kotlinx-datetime         = { module = "com.apollographql.adapters:apollo-adapters-kotlinx-datetime", version.ref = "apollo-kotlin-adapters" }
 apollo-api                               = { module = "com.apollographql.apollo:apollo-api", version.ref = "apollo" }
 apollo-runtime                           = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
-firebase-analytics                       = { module = "com.google.firebase:firebase-analytics" }
-firebase-bom                             = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
-firebase-crashlytics                     = { module = "com.google.firebase:firebase-crashlytics" }
-firebase-storage                         = { module = "com.google.firebase:firebase-storage" }
-google-services                          = { module = "com.google.gms:google-services", version.ref = "google-services" }
 hilt-android-core                        = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing                     = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler                            = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
@@ -102,8 +94,6 @@ android-application    = { id = "com.android.application", version.ref = "androi
 android-library        = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 apollo-android         = { id = "com.apollographql.apollo", version.ref = "apollo" }
 compose                = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-firebase-crashlytics   = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
-google-service         = { id = "com.google.gms.google-services", version.ref = "google-services" }
 gradle-versions        = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
 hilt                   = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-jvm   = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

@@ -20,7 +20,13 @@ export const SignInDialog = ({
   server: initialServerBaseUrl,
   step,
 }: DialogComponentProps<GLOBAL_DIALOG_SCHEMA['sign-in']>) => {
-  const shouldUseNativeSignIn = step !== 'addSelfhosted';
+  // Air-gapped builds have no AFFiNE-hosted account to sign in to. Only use
+  // the native flow when a specific, non-placeholder server was passed in.
+  const isLocalPlaceholder =
+    !!initialServerBaseUrl &&
+    /^https?:\/\/localhost(?::3010)?\/?$/.test(initialServerBaseUrl);
+  const shouldUseNativeSignIn =
+    !!initialServerBaseUrl && !isLocalPlaceholder && step !== 'addSelfhosted';
   const [useWebFallback, setUseWebFallback] = useState(!shouldUseNativeSignIn);
   const didRequestNativeSignIn = useRef(false);
   const closeRef = useRef(close);

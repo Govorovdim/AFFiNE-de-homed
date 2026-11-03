@@ -1,18 +1,11 @@
 package app.affine.pro.utils.logger
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
-import app.affine.pro.BuildConfig
-import app.affine.pro.service.CookieStore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import okhttp3.HttpUrl
 import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
@@ -41,41 +34,6 @@ class FileTree(context: Context) : Timber.Tree() {
             }
         }
     }
-
-    suspend fun checkAndUploadOldLogs(server: HttpUrl) {
-        val today = dateFormat.format(Date())
-        logDirectory.listFiles()?.forEach { file ->
-            val fileName = file.name
-            if (fileName.endsWith(".log") && !fileName.startsWith(today)) {
-                uploadLogToFirebase(server, file)
-            }
-        }
-    }
-
-    private suspend fun uploadLogToFirebase(server: HttpUrl, file: File) =
-        suspendCancellableCoroutine { continuation ->
-            val user = CookieStore.getCookie(server, CookieStore.AFFINE_USER_ID)
-                ?: return@suspendCancellableCoroutine
-            val storageRef = Firebase.storage.reference
-            val logFileRef = storageRef.child("android_log/$user/${file.name}")
-
-            val uploadTask = logFileRef.putFile(Uri.fromFile(file))
-            uploadTask.addOnSuccessListener {
-                if (file.delete()) {
-                    if (continuation.isActive) continuation.resume(true) { _, _, _ -> }
-                } else {
-                    if (continuation.isActive) continuation.resume(false) { _, _, _ -> }
-                }
-            }.addOnFailureListener { e ->
-                if (continuation.isActive) continuation.resume(false) {}
-            }
-
-            continuation.invokeOnCancellation {
-                if (uploadTask.isInProgress) {
-                    uploadTask.cancel()
-                }
-            }
-        }
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         if (priority < Log.INFO) {
@@ -112,9 +70,5 @@ class FileTree(context: Context) : Timber.Tree() {
             }
         }
 
-    }
-
-    companion object {
-        fun get() = Timber.forest().filterIsInstance<FileTree>().firstOrNull()
     }
 }
